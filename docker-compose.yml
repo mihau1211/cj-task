@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '${APP_PORT}:${APP_PORT}'
+    links:
+      - db
+    environment:
+      - DATABASE_URL=${DB_URL}
+      - APP_PORT=${APP_PORT}
+  db:
+    image: mongo
+    ports:
+      - '27017:27017'
